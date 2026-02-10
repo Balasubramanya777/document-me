@@ -43,6 +43,8 @@ Hocuspocus Realtime Server
       v
 PostgreSQL Database
 
+```
+
 ## 🧰 Tech Stack
 
 | Layer | Technology |
