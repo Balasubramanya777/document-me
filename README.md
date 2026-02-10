@@ -65,9 +65,9 @@ This project is organized as multiple repositories to ensure clear separation of
 
 | Component | Description | Repository |
 |----------|------------|------------|
-| Backend API | Authentication, REST APIs, persistence logic | 🔗 _to be added_ |
-| Frontend | Angular application with collaborative editor | 🔗 _to be added_ |
-| Realtime Server | Hocuspocus server handling CRDT sync | 🔗 _to be added_ |
+| Backend API | Authentication, REST APIs, persistence logic | 🔗 [Backend Repository](https://github.com/Balasubramanya777/document-me-.net) |
+| Frontend | Angular application with collaborative editor | 🔗 [Frontend Repository](https://github.com/Balasubramanya777/document-me-angular) |
+| Realtime Server | Realtime collaboration using Yjs & Hocuspocus | 🔗 [Realtime Server Repository](https://github.com/Balasubramanya777/document-me-hocuspocus) |
 
 
 ## 🔄 Data Flow
