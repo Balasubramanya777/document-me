@@ -96,90 +96,63 @@ This project started with a simple goal: to build a high-performance notepad app
 
 ---
 
-## Initial Approach
+### 🏁 Initial Approach
 
 The initial design was based on a row-level storage model:
 
-- Each line in the editor was mapped directly to a row in the database
-- Data retrieval was planned using pagination for efficient rendering
-- Updates were performed at the row level
+- Each line in the editor was mapped directly to a row in the database  
+- Data retrieval was planned using pagination for efficient rendering  
+- Updates were performed at the row level  
 
-### Challenges
+---
 
-#### 1. Inefficient Updates
+### ⚠️ Challenges
+
+#### 🔁 Inefficient Updates
 
 Even a small change, such as editing a single word, required updating the entire row in the database. This resulted in unnecessary write operations and reduced efficiency.
 
 ---
 
-#### 2. Row Ordering Issues
+#### 🔢 Row Ordering Issues
 
 Handling insertion of new rows introduced ordering problems:
 
-- Inserting between rows required reordering existing rows
-- Adding a new row at the top changed the index of all existing rows
+- Inserting between rows required reordering existing rows  
+- Adding a new row at the top changed the index of all existing rows  
 
-##### Attempted Solution: Lexicographic Ordering
+##### 🧩 Attempted Solution: Lexicographic Ordering
 
 To address this, a lexicographic indexing approach was implemented:
 
-- Example:
-  - Existing rows: `1`, `2`
-  - Insert between → `1.5`
-  - Insert at top → `0.5`
+- Existing rows: `1`, `2`  
+- Insert between → `1.5`  
+- Insert at top → `0.5`  
 
-##### Limitations
+##### ❌ Limitations
 
-- Index values became increasingly complex over time
-- Precision and maintainability issues arose with frequent insertions
+- Index values became increasingly complex over time  
+- Precision and maintainability issues arose with frequent insertions  
 
 ---
 
-#### 3. Styling and Markup Complexity
+#### 🎨 Styling and Markup Complexity
 
 Handling rich text formatting was another major challenge.
 
-##### Initial Design
+##### 🏗️ Initial Design
 
-- A separate table was created to store styling information
-- Each style entry referenced a corresponding row
+- A separate table was created to store styling information  
+- Each style entry referenced a corresponding row  
 
-##### Problems
+##### ❌ Problems
 
-- Difficult to support partial styling (e.g., styling a single word or character)
-- Updating styles became complex and error-prone
-- Increased difficulty in maintaining consistency between content and styles
+- Difficult to support partial styling (e.g., styling a single word or character)  
+- Updating styles became complex and error-prone  
+- Maintaining consistency between content and styles was difficult  
 
 ---
 
-## Rethinking the Architecture
+### 🔄 Rethinking the Architecture
 
 After encountering multiple limitations, it became clear that building a scalable and efficient document editor required a different approach. The initial custom design was not sufficient to handle the complexities of real-world editing and collaboration.
-
----
-
-## Key Features
-
-- Rich text editing with fine-grained styling  
-- Efficient data handling and updates  
-- Real-time multi-user collaboration  
-- Conflict-free synchronization using CRDTs  
-- Improved scalability compared to the initial design  
-
----
-
-## Key Learnings
-
-- Simple data models can become bottlenecks as complexity grows  
-- Managing ordering, updates, and styling in document systems is non-trivial  
-- CRDT-based approaches provide a reliable solution for collaboration  
-- Using established tools and frameworks significantly reduces complexity  
-
----
-
-## Conclusion
-
-What began as a simple notepad application evolved into a collaborative and scalable document editing system. This journey involved rethinking core design decisions, addressing architectural challenges, and adopting modern technologies to build a more robust solution.
-
-
-
